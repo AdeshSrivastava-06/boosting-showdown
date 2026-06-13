@@ -1,0 +1,43 @@
+CATBOOST VS XGBOOST VS LIGHTGBM 
+
+CATBOOST-- 
+      [1]DT are symmetric trees(means 2nodes on the same level will use the same splitting conditions)
+      [2]Hadles categorical data as ordered encoding
+      [3]Sampling(choosing the data)-minimum variance sampling/uniform
+      [4]2017(yendex) developed by russian 
+
+      Here we use a special data structure, so for calling the special data structure we use the word pool from the catboost library, which automatically handles the categorical data. And does the training and testing 
+
+      By default, it will run 1000 iterations, and by research it is proved that it works best when we provide the default parameters. but it will take little bit more time as compared to XGBoost And LBGM 
+
+      But we can fine tune with the help of parameters so that it will take less time. 
+
+      Since it handles categorical data very well, it has a very good parameter that is one-hot-max-size, which indicates that if we have more, suppose 100, categorical variables, then we have to provide the model the actual number Of categorical data to use and process. If we are providing as number five, then only the top five will be there, and the other minimum will be categorized into one categorical feature. 
+
+      When to use--More Categorical Data, Large Data And if you have GPU 
+
+LIGHTGBM --
+      [1]DT grow leaf wise(means in one iteration only one leaf can grow based on max gain)
+      [2]Bin,Bucket based for handling categorical variable
+      [3]GOSS(Gradient one side sampling)
+      [4]2016(micorsoft) moderate 
+
+      As it is designed by Microsoft, it is one of the fastest among all the three. 
+
+      We don't have to do any encoding for categorical data. We just have to convert the data type into categorical so that light GBM can understand and process it. 
+
+      When to use--Harry to train, perform, and do not want to tune the news light GPM. 
+
+XGBOOST --
+      [1]DT grow normal depth wise
+      [2]No specific way we have to do one hot encoding
+      [3]without replacement( no bootstrap)
+      [4]2014(open source) hence more community support.
+
+      It takes really less time to train. But a little bit more than LIGHTGBM. 
+
+      We have to pre-process the categorical data and use one-hot encoder or label encoder 
+
+      When to use--Community support performance and want to tune and have a little bit of time 
+
+We can't say which algorithm is much better, but it depends upon the data and the problem we are handling. All three perform exceptionally well and they have neck to neck accuracy.
